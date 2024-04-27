@@ -1,0 +1,170 @@
+@prefix LAB: <http://www.example.edu/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+LAB:journal a rdfs:Class .
+
+LAB:keyword a rdfs:Class .
+
+LAB:paper a rdfs:Class ;
+    LAB:cited LAB:cited_paper ;
+    LAB:has_keyword LAB:keyword ;
+    LAB:presented_in LAB:venue .
+
+LAB:person a rdfs:Class .
+
+LAB:proceeding a rdfs:Class .
+
+LAB:published_in a rdfs:Class ;
+    LAB:in_journal LAB:journal ;
+    LAB:published_paper LAB:paper .
+
+LAB:review a rdfs:Class ;
+    LAB:reviewed_by LAB:reviewer ;
+    LAB:reviews LAB:paper .
+
+LAB:venue a rdfs:Class ;
+    LAB:is_chair LAB:chair ;
+    LAB:part_of LAB:proceeding .
+
+LAB:writes a rdfs:Class ;
+    LAB:has_written LAB:paper ;
+    LAB:written_by LAB:author .
+
+LAB:abstract a rdf:Property ;
+    rdfs:domain LAB:paper .
+
+LAB:acceptanceProbability a rdf:Property ;
+    rdfs:domain LAB:review .
+
+LAB:cited a rdf:Property ;
+    rdfs:domain LAB:paper ;
+    rdfs:range LAB:cited_paper .
+
+LAB:city a rdf:Property ;
+    rdfs:domain LAB:proceeding .
+
+LAB:conference rdfs:subClassOf LAB:venue .
+
+LAB:department a rdf:Property ;
+    rdfs:domain LAB:person .
+
+LAB:doi a rdf:Property ;
+    rdfs:domain LAB:paper .
+
+LAB:domain a rdf:Property ;
+    rdfs:domain LAB:keyword .
+
+LAB:email a rdf:Property ;
+    rdfs:domain LAB:person .
+
+LAB:has_keyword a rdf:Property ;
+    rdfs:domain LAB:paper ;
+    rdfs:range LAB:keyword .
+
+LAB:has_written a rdf:Property ;
+    rdfs:domain LAB:writes ;
+    rdfs:range LAB:paper .
+
+LAB:in_journal a rdf:Property ;
+    rdfs:domain LAB:published_in ;
+    rdfs:range LAB:journal .
+
+LAB:institution a rdf:Property ;
+    rdfs:domain LAB:person .
+
+LAB:is_chair a rdf:Property ;
+    rdfs:domain LAB:published_in ;
+    rdfs:range LAB:paper .
+
+LAB:is_corresponding_author a rdf:Property ;
+    rdfs:domain LAB:writes .
+
+LAB:journal_id a rdf:Property ;
+    rdfs:domain LAB:journal .
+
+LAB:journal_name a rdf:Property ;
+    rdfs:domain LAB:journal .
+
+LAB:keyword_id a rdf:Property ;
+    rdfs:domain LAB:keyword .
+
+LAB:keyword_name a rdf:Property ;
+    rdfs:domain LAB:keyword .
+
+LAB:link a rdf:Property ;
+    rdfs:domain LAB:paper .
+
+LAB:num_pages a rdf:Property ;
+    rdfs:domain LAB:paper .
+
+LAB:paper_id a rdf:Property ;
+    rdfs:domain LAB:paper .
+
+LAB:paper_title a rdf:Property ;
+    rdfs:domain LAB:paper .
+
+LAB:part_of a rdf:Property ;
+    rdfs:domain LAB:venue ;
+    rdfs:range LAB:proceeding .
+
+LAB:person_id a rdf:Property ;
+    rdfs:domain LAB:person .
+
+LAB:person_name a rdf:Property ;
+    rdfs:domain LAB:person .
+
+LAB:presented_in a rdf:Property ;
+    rdfs:domain LAB:paper ;
+    rdfs:range LAB:venue .
+
+LAB:proceeding_id a rdf:Property ;
+    rdfs:domain LAB:proceeding .
+
+LAB:proceeding_name a rdf:Property ;
+    rdfs:domain LAB:proceeding .
+
+LAB:published_paper a rdf:Property ;
+    rdfs:domain LAB:published_in ;
+    rdfs:range LAB:paper .
+
+LAB:publishing_year a rdf:Property ;
+    rdfs:domain LAB:published_in .
+
+LAB:reviewed_by a rdf:Property ;
+    rdfs:domain LAB:review ;
+    rdfs:range LAB:reviewer .
+
+LAB:reviews a rdf:Property ;
+    rdfs:domain LAB:review ;
+    rdfs:range LAB:paper .
+
+LAB:venue_edition a rdf:Property ;
+    rdfs:domain LAB:venue .
+
+LAB:venue_id a rdf:Property ;
+    rdfs:domain LAB:venue .
+
+LAB:venue_name a rdf:Property ;
+    rdfs:domain LAB:venue .
+
+LAB:venue_year a rdf:Property ;
+    rdfs:domain LAB:venue .
+
+LAB:volume a rdf:Property ;
+    rdfs:domain LAB:published_in .
+
+LAB:workshop rdfs:subClassOf LAB:venue .
+
+LAB:written_by a rdf:Property ;
+    rdfs:domain LAB:writes ;
+    rdfs:range LAB:author .
+
+LAB:chair rdfs:subClassOf LAB:person .
+
+LAB:author rdfs:subClassOf LAB:person .
+
+LAB:cited_paper rdfs:subClassOf LAB:paper .
+
+LAB:reviewer rdfs:subClassOf LAB:person .
+
